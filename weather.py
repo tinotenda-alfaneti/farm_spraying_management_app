@@ -12,6 +12,7 @@ class Weather:
     
     # initialising the instance variables taking the parameter of city
     def __init__(self, town):
+        
         self.town = town
         self.parameters = {"key": API_KEY, "q": self.town, "days": 3,"day":'day'}
         self.response = None

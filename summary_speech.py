@@ -11,7 +11,7 @@ class ReadSummary:
         self.engine.say(self.message)
 
         # set voice speed
-        self.engine.setProperty("rate", 10)
+        self.engine.setProperty("rate", 5)
 
         # get available voices
         voices = self.engine.getProperty("voices")
