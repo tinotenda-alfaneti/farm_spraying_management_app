@@ -6,7 +6,7 @@ The app can send email notification, email notification and voice outputs of the
 Spraying management is crucial because some weather conditions affect the effectiveness of the spraying
 and some can even cause wastage through run-off and drift.
 
-You can download and install the WeatherApp.exe file to view the project
+You can download and install the WeatherApp.exe file to view the project from https://drive.google.com/file/d/1EQ4BHsHLYxYabbt3L_-GBX6M5jhgm1tq/view?usp=sharing
 
 
 
