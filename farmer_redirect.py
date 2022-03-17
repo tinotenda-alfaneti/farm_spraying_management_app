@@ -1,3 +1,4 @@
+from os import system
 from tkinter import Label, Entry, Button
 from summary_speech import ReadSummary
 
@@ -18,6 +19,8 @@ class Register:
     def capture_data(self):
         
         '''Function for registration user interface'''
+        for widget in self.window.winfo_children():
+            widget.destroy()
 
         # register button
         self.register_button = Button(self.window, text="Register", command = self.register_info, font=(self.font_name, 10, "bold"), fg="red", bg="white")
@@ -84,8 +87,11 @@ class Register:
         
         self.welcome_label.config(text=f"NOTIFICATION\n\nYour last spray was on {spray_date}\nExpiring {expiry} days from day of application.")
 
-        self.calculator_button = Button(self.window, text="Update Personal Info", command = '', font=(self.font_name, 10, "bold"), fg="red", bg="white")
+        self.calculator_button = Button(self.window, text="Update Personal Info", command = self.capture_data, font=(self.font_name, 10, "bold"), fg="red", bg="white")
         self.calculator_button.grid(row=1, column=0, padx=10, pady=10)
 
         self.study_button = Button(self.window, text="Read Summary", command = analysis_speech.read_aloud, font=(self.font_name, 10, "bold"), fg="red", bg="white")
         self.study_button.grid(row=1, column=1, padx=10, pady=10)
+
+        self.study_button = Button(self.window, text="Exit", command = self.window.destroy, font=(self.font_name, 10, "bold"), fg="red", bg="white")
+        self.study_button.grid(row=1, column=2, padx=10, pady=10)
