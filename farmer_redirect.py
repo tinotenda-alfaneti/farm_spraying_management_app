@@ -5,12 +5,12 @@ from summary_speech import ReadSummary
 class Register:
     '''Class for registeration and registration window'''
     
-    def __init__(self, window, user, name, welcome_label, notification_message):
+    def __init__(self, window, user, pwd, welcome_label, notification_message):
         
         # initializing window
         self.window = window
         self.user = user
-        self.name  = name
+        self.pwd  = pwd
         self.notification_message = notification_message
         self.welcome_label = welcome_label
         self.font_name = "Courier"
@@ -19,8 +19,8 @@ class Register:
     def capture_data(self):
         
         '''Function for registration user interface'''
-        for widget in self.window.winfo_children():
-            widget.destroy()
+        # for widget in self.window.winfo_children():
+        #     widget.destroy()
 
         # register button
         self.register_button = Button(self.window, text="Register", command = self.register_info, font=(self.font_name, 10, "bold"), fg="red", bg="white")
@@ -58,7 +58,7 @@ class Register:
         if "" not in (self.city, self.last_spray_date, self.spray_expiry): # checking if all fields are filled
 
             self.farmer_register = open("farmer_record.csv", "w")
-            self.farmer_register.write("{},{},{},{}\n".format(self.user, self.city, self.last_spray_date, self.spray_expiry))
+            self.farmer_register.write("{},{},{},{},{}\n".format(self.user, self.pwd, self.city, self.last_spray_date, self.spray_expiry))
             self.farmer_register.close()
             
             # clearing the screen
@@ -71,7 +71,7 @@ class Register:
             self.register_button.destroy()
 
 
-            self.welcome_label.config(text="Registration Successful, " + self.name)
+            self.welcome_label.config(text=f"Registration Successful, {self.user}")
             self.success_registration()
             
     # successful registration screen
@@ -80,8 +80,8 @@ class Register:
         '''function for the successful registration screen and log in'''
         farmer_details = open("farmer_record.csv", "r")
         for record in farmer_details:
-            spray_date = record.split(",")[2]
-            expiry = record.split(",")[3]
+            spray_date = record.split(",")[3]
+            expiry = record.split(",")[4]
 
         analysis_speech = ReadSummary(self.notification_message)
         
